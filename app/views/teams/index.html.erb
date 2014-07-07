@@ -1,0 +1,26 @@
+<h4>All teams</h4>
+<table>
+	<tr>
+		<th>Team id</th>
+		<th>Team name</th>
+		<th>Team's school</th>
+		<th colspan="2">actions</th>
+	</tr>
+	<% @teams.each do |team| %>
+		<tr>
+			<td><%= team.id %></td>
+			<td><%= team.name %></td>
+			<td><%= team.school.name %></td>
+			<% if can? :update, team %>
+				<td><%= link_to "Edit", edit_team_path(team) %></td>
+			<% end %>
+			<% if can? :destroy, team %>
+				<td><%= link_to "Delete", team_path(team), method: :delete, :confirm => "Are you sure?" %></td>
+			<% end %>
+			<td><%= image_tag team.avatar.url %></td>
+		</tr>
+	<% end %>
+</table>
+<% if can? :new, @school %>
+	<%= link_to "Create New Team", new_team_path %>
+<% end %>

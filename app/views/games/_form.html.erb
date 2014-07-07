@@ -1,0 +1,34 @@
+<div class="game_new">
+	<%= form_for @game do |f| %>
+		<p>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</p>
+		<h4> Create new game </h4>
+		<%= f.label :school1 %>
+		<%= select_tag "game[school1]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_div(this.value)" %>
+		<%= f.label :team1 %>
+	  <span id="teamsDiv">
+	  	<%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>
+		</span>
+		<div class="game_new_vs"><h3> V/S </h3></div>
+			<%= f.label :school2 %>
+			<%= select_tag "game[school2]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_div2(this.value)" %>
+			<%= f.label :team2 %>
+	  	<span id="teamsDiv2">
+	  		<%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>
+			</span>
+		<p>
+			<%= f.label :start_time %>
+			<%= f.text_field :start_time, :autocomplete => :off, readonly: true,:size => 10%>
+		</p>
+		<p>
+			<%= f.label :end_time %>
+			<%= f.text_field :end_time, :autocomplete => :off, readonly: true,:size => 10%>
+		</p>
+
+	  <p>
+			<%= f.submit %>
+		</p>
+	<% end %>
+</div>

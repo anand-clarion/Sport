@@ -1,0 +1,65 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.game_new { margin: 50px }
+.game_new_vs{ margin-left :220px }
+
+.game_show
+{
+	height: 188px; width:300px;margin-right:100px;float:right; 
+}
+
+.game_show_detail
+{
+	height:188px; width:300px;float:left;margin-left: 250px
+}
+
+.game_start_date
+{
+	height:90px;
+	width:251px;
+	float:left;
+	margin-top:33px;
+	margin-left:264px;
+
+}
+.game_end_date
+{
+	height:90px;
+	width:251px;
+	float:right;
+	margin-right:100px;
+	margin-top:33px;
+}
+
+.game_show_comment
+{
+	float:right;margin-right: 130px;height:200px; width:200px
+}
+.game_show_like
+{
+	margin-left:262px;float:left;height:200px; width:200px;
+
+}
+.score
+{
+	height:31px;
+	width:596px;
+	position:relative;
+}
+.score1
+{
+	float:left;
+	margin-left:20px;
+}
+.score2
+{
+	float:right;
+}
+
+.create_score
+{
+	float:right;
+	margin-right:-103px;
+	margin-left:10px;
+}

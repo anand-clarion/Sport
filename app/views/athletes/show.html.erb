@@ -1,0 +1,60 @@
+<center><h4> Profile of - <%= @athlete.name %></h4></center>
+<div class = "athlete_show">
+	<%= image_tag @athlete.avatar.url %>
+</div>
+<div class = "athlete_show_detail">
+	<table class = "athlete_show_table">
+		<tr>
+			<th>Name</th> 
+			<td><%= @athlete.name %></td>
+		</tr>
+		<tr>
+			<th>E-mail</th>
+			<td><%= @athlete.email %></td>
+		</tr>
+		<tr>
+			<th>City</th>
+			<td><%= @athlete.city %></td>
+		</tr>
+		<tr>
+			<th>School</th>
+			<td><%= @athlete.school.name %></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><%= @athlete.phone_no %></td>
+		</tr>
+		<% if can? :manage, @athlete %>
+			<tr>
+				<th> Action </th>
+				<td>
+					<%= link_to 'Edit', edit_athlete_path(@athlete), method: :get %>
+					<%= link_to 'Delete', athlete_path(@athlete), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+<div class = "athlete_show_comment">
+	<h4> comments - <%= @athlete.comments.count %></h4>
+	<% if @athlete.comments.empty? %>
+		<%= link_to '$Add comment', new_athlete_comment_path(@athlete) %>
+	<% else %>
+		<% @athlete.comments.each do |comment| %>
+			<ul>
+				<li><%=comment.content %></li>
+			</ul>
+			<% if can? :destroy, @athlete %>
+				<%= link_to "Edit", edit_athlete_comment_path(@athlete, comment) %>
+			<% end %>
+			<% if can? :destroy, @athlete %>
+        <%= link_to "Delete", athlete_comment_path(@athlete, comment), method: :delete %>
+      <% end %>
+		<% end %>
+		<%= link_to'Add comment',new_athlete_comment_path(@athlete) %>
+	<% end %>
+</div>
+<div class = "athlete_show_like">
+	<h4>Total Likes - <%= @athlete.likes.count %></h4>
+	<%= button_to "like", new_athlete_like_path(@athlete), method: :get %>
+</div>

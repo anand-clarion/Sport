@@ -1,0 +1,41 @@
+<%= form_for @athlete, url: save_athletes_path do |f| %>
+  <div><%= f.label :name %><br />
+    <%= f.text_field :name %></div>
+
+  <div><%= f.label :email %><br />
+  	<%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div><%= f.label :city %><br />
+  	<%= f.text_field :city %></div>
+
+  <div><%= f.label :state %><br />
+  	<%= f.text_field :state %></div>
+
+  <div><%= f.label :phone_no %><br />
+  	<%= f.text_field :phone_no %></div>
+ 
+  <div><%= f.label :school_id %><br>
+    <%= f.collection_select(:school_id, School.all, :id, :name, {:onchange => "alert_me_test()" })%>
+  </div>
+  <div>
+    <%= f.label :team_id %><br>
+    <%= f.collection_select(:team_id, Team.all, :id, :name) %>
+  </div>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  </p>
+  <br>
+  <div>
+    <%= f.check_box :term_and_condition %>
+    I have accepted <span id="term_and_condition">
+      <%= link_to "Term and Condition", remote: true%></span>
+  <br>
+  <div><%= f.submit %></div>
+<% end %>

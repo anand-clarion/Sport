@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sport</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class ="header">
+    <span class="alert"><%= alert %></span>
+    <span class="notice"><%= notice %></span><br>
+    <% if athlete_signed_in? %>
+    	Logged in as <strong><%= current_athlete.name %></strong>
+      E-mail- <b><%=current_athlete.email %></b>
+    	<%= link_to 'Edit profile', edit_athlete_registration_path %>|
+      <%= link_to "Logout", destroy_athlete_session_path, method: :delete  %>
+      <div class="header1">
+        <%= link_to "Athletes", athletes_path %>
+        <%= link_to "School", schools_path %>
+        <%= link_to "Games", games_path %>
+      <%= link_to "Team", teams_path %>
+      </div>
+    <% else %>
+  	 <%= link_to "Sign up", new_athlete_registration_path %> |
+  	 <%= link_to "Login", new_athlete_session_path %>
+	  <% end %>
+  </div>
+
+	<%= yield %>
+</body>
+</html>

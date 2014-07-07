@@ -1,0 +1,24 @@
+<h4>All Games</h4>
+<table>
+	<tr>
+		<th>Game id</th>
+		<th>Game name</th>
+		<th colspan="3">Action</th>
+	</tr>
+	<% @games.each do |game| %>
+		<tr>
+			<td><%= game.id %></td>
+			<td><%= game.name %></td>
+			<td><%= link_to "View", game_path(game) %></td>
+			<% if can? :update, game %>
+				<td><%= link_to "Edit", edit_game_path(game) %></td>
+			<% end %>
+			<% if can? :destroy, game %>
+				<td><%= link_to "delete", game_path(game), method: :delete %></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+<% if can? :create, @games %>
+	<%= link_to "Add New Game", new_game_path %>
+<% end %>

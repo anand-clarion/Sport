@@ -1,0 +1,16 @@
+<%= form_for @team do |f| %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :school_id %>
+		<%= f.collection_select(:school_id, School.all, :id, :name) %>
+	</p>
+	<p>
+		<%= f.file_field :avatar %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
