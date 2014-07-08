@@ -14,6 +14,7 @@ class ScoresController < ApplicationController
   def create
     @score = Score.new(score_params)
     if @score.save
+      flash[:notice] = "Score successfully saved"
       redirect_to games_url
     else
       render :nothing

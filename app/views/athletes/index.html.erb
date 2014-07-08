@@ -1,20 +1,20 @@
 <h4>All athletes</h4>
 <table>
-	<tr>
-		<th>Athlete id</th>
-		<th>Athlete name</th>
-		<th>City</th>
-		<th>Show detail</th>
-	</tr>
-	<% @athletes.each do |athlete| %>
-		<tr>
-			<td><%= athlete.id %></td>
-			<td><%= athlete.name %></td>
-			<td><%= athlete.city %></td>
-			<td><%= link_to "View", athlete_path(athlete) %></td>
-		</tr>
-	<% end %>
+  <tr>
+    <th>Athlete id</th>
+    <th>Athlete name</th>
+    <th>City</th>
+    <th>Show detail</th>
+  </tr>
+  <% @athletes.each do |athlete| %>
+    <tr>
+      <td><%= athlete.id %></td>
+      <td><%= athlete.name %></td>
+      <td><%= athlete.city %></td>
+      <td><%= link_to "View", athlete_path(athlete) %></td>
+    </tr>
+  <% end %>
 </table>
 <% if can? :create, @athletes %>
-	<%= link_to "Add New Athlete", new_athlete_path %>
+  <%= link_to "Add New Athlete", new_athlete_path %>
 <% end %>

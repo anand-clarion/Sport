@@ -14,6 +14,7 @@ class TeamsController < ApplicationController
   # This action insert a new record in teams table
   def create
     if Team.create(team_params)
+      flash[:notice] = "Team successfully created"
       redirect_to teams_url
     else
       render "new"
@@ -29,6 +30,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if @team.update_attributes(team_params)
+      flash[:notice] = "Team successfully updated"
       redirect_to teams_url
     else
       render 'edit'
@@ -38,6 +40,7 @@ class TeamsController < ApplicationController
   # This action delete a record from teams table
   def destroy
     @team = Team.find(params[:id]).destroy
+      flash[:notice] = "Team successfully deleted"
     redirect_to teams_url
   end
 

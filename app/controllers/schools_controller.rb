@@ -4,6 +4,7 @@ class SchoolsController < ApplicationController
   # This action show all schools
   def index
     @schools = School.all
+    flash.keep
     # authorize! :read, @schools
   end
   
@@ -15,6 +16,8 @@ class SchoolsController < ApplicationController
   # This action insert a new record in schools table 
   def create
     if School.create!(school_params)
+      # flash.now[:error] = "Could not save client"
+      flash[:notice] = "School successfully created"
       redirect_to schools_url
     else
       render "new"
@@ -30,6 +33,7 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     if @school.update_attributes(school_params)
+      flash[:notice]="School successfully updated"
       redirect_to schools_url
     else
       render 'edit'
@@ -39,6 +43,7 @@ class SchoolsController < ApplicationController
   # This action delete a record from schools table
   def destroy
     @school = School.find(params[:id]).destroy
+    flash[:notice] = "School successfully deleted"
     redirect_to schools_url
   end
 

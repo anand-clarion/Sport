@@ -16,19 +16,10 @@ class GamesController < ApplicationController
   # The action insert a new record in games table
   def create
     game = game_params
-    # abort game.inspect
-    # time =params[:start_time_dt]
-    # params[:start_time]+= " #{time}"
-    # abort params.inspect
-    # DateTime.new(2007,11,19,8,37,48)
-    # game[:start_time] = params[:start_time]
-    #ame.delete(:start_time_dt)
     game.delete(:school1)
     game.delete(:school2)
-    # abort game.inspect
-    # abort game.inspect
     if @game = Game.create(game)
-      # abort @game.inspect
+      flash[:notice] = "Game successfully created"
       redirect_to games_url
     else
       render "new" 
@@ -50,6 +41,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if @game.update_attributes(game_params)
+      flash[:notice] = "Game successfully updated"
       redirect_to games_url
     else
       render 'edit'
@@ -59,6 +51,7 @@ class GamesController < ApplicationController
   # This action delete a record from games table
   def destroy
     @game = Game.find(params[:id]).destroy
+    flash[:alert] =" games successfully deleted"
     redirect_to games_url
   end
 

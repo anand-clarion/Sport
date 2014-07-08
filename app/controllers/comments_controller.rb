@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)  
     if @comment.save  
+      flash[:notice] = "comment successfully Created"
       redirect_to path(find_commentable)
     else  
       render :action => 'new'  
@@ -36,6 +37,7 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.find(params[:id])
     if @comment.update_attributes(comment_params)
+      flash[:notice] = "Comment successfully updated"
       redirect_to path(find_commentable) 
     end
   end
@@ -44,6 +46,7 @@ class CommentsController < ApplicationController
   def destroy
     @commentable = find_commentable
     @commentable.comments.find(params[:id]).destroy
+    flash[:notice] = "comment successfully deleted"
     redirect_to path(find_commentable)
   end
 
@@ -70,5 +73,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :commentable_id, :commentable_type)
   end
-  
+
 end

@@ -1,92 +1,92 @@
 <center><h4> Game - <%= @game.name %></h4></center>
 <div class = "game_show_detail">
-	<table class = "athlete_show_table">
-		<tr>
-			<th>Team1</th> 
-			<td><%= Team.find(@game.team1).name %></td>
-		</tr>
-		<tr>
-			<th>School</th>
-			<td><%= Team.find(@game.team1).school.name %></td>
-		</tr>
-		<tr>
-			<th>Image</th>
-			<td><%= image_tag Team.find(@game.team1).avatar.url %></td>
-		</tr>
-	</table>
+  <table class = "athlete_show_table">
+    <tr>
+      <th>Team1</th> 
+      <td><%= Team.find(@game.team1).name %></td>
+    </tr>
+    <tr>
+      <th>School</th>
+      <td><%= Team.find(@game.team1).school.name %></td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><%= image_tag Team.find(@game.team1).avatar.url %></td>
+    </tr>
+  </table>
 
-	<div class = "score" >
-		<div class="score1">
-			<%= form_for @score do |score| %>
-				<%= score.hidden_field :game_id, :value => @game.id %>
-				<%= score.hidden_field :team1, :value => @game.team1 %>
-				<% if can? :update, @game %>
-					<%= score.label :score1 %>
-					<%= number_field_tag "score[score1]", '',{:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
-				<% end %>
-		</div>
-		<div class="score2">
-			<%= score.hidden_field :team2, :value => @game.team2 %>
-			<% if can? :update, @game %>
-					<%= score.label :score2 %>
-					<%= number_field_tag "score[score2]",'', {:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
-				<% end %>
-				<div class="create_score">
-					<% if can? :create, @game %>
-						<%= score.submit 'create score', {:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
-					<% 	end %>
-				</div>
-		</div	>
-			<% end %>
-	</div>
+  <div class = "score" >
+    <div class="score1">
+      <%= form_for @score do |score| %>
+        <%= score.hidden_field :game_id, :value => @game.id %>
+        <%= score.hidden_field :team1, :value => @game.team1 %>
+        <% if can? :update, @game %>
+          <%= score.label :score1 %>
+          <%= number_field_tag "score[score1]", '',{:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
+        <% end %>
+    </div>
+    <div class="score2">
+      <%= score.hidden_field :team2, :value => @game.team2 %>
+      <% if can? :update, @game %>
+        <%= score.label :score2 %>
+        <%= number_field_tag "score[score2]",'', {:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
+      <% end %>
+      <div class="create_score">
+        <% if can? :create, @game %>
+          <%= score.submit 'create score', {:disabled => !(Time.now >= @game.start_time && Time.now <= @game.end_time)} %>
+        <%  end %>
+      </div>
+    </div >
+      <% end %>
+  </div>
 </div>
 <div class = "game_show">
-	<table class = "athlete_show_table">
-		<tr>
-			<th>Team2</th> 
-			<td><%= Team.find(@game.team2).name %></td>
-		</tr>
-		<tr>
-			<th>School</th>
-			<td><%= Team.find(@game.team2).school.name %></td>
-		</tr>
-		<tr>
-			<th>Image</th>
-			<td><%= image_tag Team.find(@game.team2).avatar.url  %></td>
-		</tr>
-	</table>
+  <table class = "athlete_show_table">
+    <tr>
+      <th>Team2</th> 
+      <td><%= Team.find(@game.team2).name %></td>
+    </tr>
+    <tr>
+      <th>School</th>
+      <td><%= Team.find(@game.team2).school.name %></td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><%= image_tag Team.find(@game.team2).avatar.url  %></td>
+    </tr>
+  </table>
 
 </div>
 <div class = "game_start_date">
-	<h3>Game start time</h3>
-	<%= @game.start_time %>
+  <h3>Game start time</h3>
+  <%= @game.start_time %>
 </div>
 <div class = "game_end_date">
-	<h3>Game End time</h3>
-	<%= @game.end_time %>
+  <h3>Game End time</h3>
+  <%= @game.end_time %>
 </div>
 <div class = "game_show_comment">
-	<h4> comments - <%= @game.comments.count %></h4>
-	<% if @game.comments.empty? %>
-		<%= link_to '$Add comment', new_game_comment_path(@game) %>
-	<% else %>
-		<% @game.comments.each do |comment| %>
-			<ul>
-				<li><%=comment.content %></li>
-			</ul>
-			<% if can? :update, @game %>
-				<%= link_to "Edit", edit_game_comment_path(@game, comment) %>
-			<% end %>
-			<% if can? :destroy, @game %>
+  <h4> comments - <%= @game.comments.count %></h4>
+  <% if @game.comments.empty? %>
+    <%= link_to '$Add comment', new_game_comment_path(@game) %>
+  <% else %>
+    <% @game.comments.each do |comment| %>
+      <ul>
+        <li><%=comment.content %></li>
+      </ul>
+      <% if can? :update, @game %>
+        <%= link_to "Edit", edit_game_comment_path(@game, comment) %>
+      <% end %>
+      <% if can? :destroy, @game %>
         <%= link_to "Delete", game_comment_path(@game, comment), method: :delete %>
       <% end %>
-		<% end %><br>
-		<%= link_to'Add comment',new_game_comment_path(@game) %>
-	<% end %>
+    <% end %><br>
+    <%= link_to'Add comment',new_game_comment_path(@game) %>
+  <% end %>
 </div>
 <div class = "game_show_like">
-	<h4>Total Likes - <%= @game.likes.count %></h4>
-	<%= link_to "like", new_game_like_path(@game) %>
+  <h4>Total Likes - <%= @game.likes.count %></h4>
+  <%= link_to "like", new_game_like_path(@game) %>
 </div>
 
 

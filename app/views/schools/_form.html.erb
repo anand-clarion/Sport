@@ -1,20 +1,20 @@
 <%= form_for @school  do |f| %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :address %>
-		<%= f.text_field :address %>
-	</p>
-	<p>
-		<%= f.label :phone_no %>
-		<%= f.text_field :phone_no %>
-	</p>
-	<p>
-	  <%= f.file_field :avatar %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :phone_no %>
+    <%= f.text_field :phone_no %>
+  </p>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

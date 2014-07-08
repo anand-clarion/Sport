@@ -8,19 +8,12 @@ class LikesController < ApplicationController
     like = Like.new(likable_id: @likable.id , likable_type: @likable.class , user: current_user.id)
     # abort  @likable.class.inspect
     if like.save
+      flash[:notice] = "like successfully saved"
       redirect_to path(find_likable)
     else 
       redirect_to path(find_likable)
     end
   end
-
-  # def create
-    # @likable = find_likable
-    # abort @likable.id.inspect
-    # @like = Like.where(likable_id: @likable.id).where(likable_type: @likable.class).last
-    # Like.destroy(@like)
-    # redirect_to path(find_likable)
-  # end
 
   # This action find attributes for a like object crud functionality
   def find_likable

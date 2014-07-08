@@ -8,8 +8,9 @@
 </head>
 <body>
   <div class ="header">
-    <span class="alert"><%= alert %></span>
-    <span class="notice"><%= notice %></span><br>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
     <% if athlete_signed_in? %>
     	Logged in as <strong><%= current_athlete.name %></strong>
       E-mail- <b><%=current_athlete.email %></b>

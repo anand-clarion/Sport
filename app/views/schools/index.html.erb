@@ -1,30 +1,27 @@
 <table>
-	<tr>
-		<th>School Id</th>
-		<th>School name</th>
-		<th>School address</th>
-		<th>Phone no</th>
-		<th colspan="2"></th>
-	</tr>
-	<% @schools.each do |school| %>
-		<tr>
-			<td><%= school.id %></td>
-			<td><%= school.name %></td>
-			<td><%= school.address %></td>
-			<td><%= school.phone_no %></td>
-			<% if can? :update, school %>
-				<td><%= link_to 'Edit', edit_school_path(school) %></td>
-			<% end %>
-			<% if can? :destroy, school %>
-				<td><%= link_to 'Delete', school_path(school),confirm: "Are you Sure",method: :delete %></td>
-		  <% end %>
-		  <td><%= image_tag school.avatar.url %></td>
-			<!-- <td><%= image_tag school.avatar.url(:medium) %></td> -->
-			<!-- <td><%= image_tag school.avatar.url(:thumb) %></td> -->
-
-		</tr>
-	<% end %>
+  <tr>
+    <th>School Id</th>
+    <th>School name</th>
+    <th>School address</th>
+    <th>Phone no</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @schools.each do |school| %>
+    <tr>
+      <td><%= school.id %></td>
+      <td><%= school.name %></td>
+      <td><%= school.address %></td>
+      <td><%= school.phone_no %></td>
+      <% if can? :update, school %>
+        <td><%= link_to 'Edit', edit_school_path(school) %></td>
+      <% end %>
+      <% if can? :destroy, school %>
+        <td><%= link_to 'Delete', school_path(school),confirm: "Are you Sure",method: :delete %></td>
+      <% end %>
+      <td><%= image_tag school.avatar.url %></td>
+    </tr>
+  <% end %>
 </table>
 <% if can? :create, @schools %>
-	<%= link_to 'New School registration', new_school_path %>
+  <%= link_to 'New School registration', new_school_path %>
 <% end %>
