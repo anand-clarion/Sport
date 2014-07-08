@@ -18,3 +18,9 @@
 <% if can? :create, @athletes %>
   <%= link_to "Add New Athlete", new_athlete_path %>
 <% end %>
+
+<% Athlete.city.name_with.each do |t| %>
+  <%= t.name %>
+  <br>
+<% end %>
+

@@ -1,4 +1,7 @@
 class Athlete < ActiveRecord::Base
+  scope :khajuraho_city, -> { where(city: 'khajuraho') }
+  scope :name_with_himeesh, -> { where(name: "himeesh") }
+  scope :scope_with_argument, -> (athleteid) { find(athleteid) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

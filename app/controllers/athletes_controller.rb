@@ -4,6 +4,8 @@ class AthletesController < ApplicationController
   # This action show all athletes
   def index
     @athletes = Athlete.all
+    @a = Athlete.first
+    @a = Athlete.scope_with_argument(@a.id)
   end
 
   # This action creates an instance for new athlete
