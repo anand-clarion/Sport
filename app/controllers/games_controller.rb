@@ -69,7 +69,7 @@ class GamesController < ApplicationController
   end
 
   # This action updates teams within school selection from drop down list
-   def update_teams2
+  def update_teams2
     @teams2 = Team.where(:school_id => params[:school_id]).all
     render :partial => "teams2", :object => @teams2
   end

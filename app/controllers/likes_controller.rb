@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
   # This action insert a new record in likes table
-	def new
+  def new
     @likable = find_likable
     @value = @likable.likes.count
     @value += 1
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     else 
       redirect_to path(find_likable)
     end
-	end
+  end
 
   # def create
     # @likable = find_likable
@@ -44,5 +44,5 @@ class LikesController < ApplicationController
       return games_url
     end
   end
-  
+   
 end

@@ -1,18 +1,18 @@
 class CommentsController < ApplicationController
 
   # This action show all comments 
-	def index
+  def index
     @comments = Comment.all
-	end
+  end
 
   # This action creates an instance for new comment
-	def new
+  def new
     @commentable = find_commentable
     @comments = @commentable.comments.new
   end
 
   # This action insert a new record in comments table
-	def create 
+  def create 
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)  
     if @comment.save  
@@ -22,14 +22,14 @@ class CommentsController < ApplicationController
     end  
   end  
 
-	def show
-	end
+  def show
+  end
 
   # This action edit a comment information
-	def edit 
+  def edit 
     @commentable = find_commentable
     @comment = @commentable.comments.find(params[:id])
-	end
+  end
 
   # This action update a comment information
   def update
@@ -59,16 +59,16 @@ class CommentsController < ApplicationController
 
   # This action find path for redirect after comment crud functionality
   def path(commentable)
-     if Athlete === commentable
-       return athletes_url
-     else
-       return games_url
-     end
-   end
+      if Athlete === commentable
+        return athletes_url
+      else
+        return games_url
+      end
+  end
   
   # This action permit accessible attributes
-   def comment_params
+  def comment_params
     params.require(:comment).permit(:content, :commentable_id, :commentable_type)
   end
-
+  
 end

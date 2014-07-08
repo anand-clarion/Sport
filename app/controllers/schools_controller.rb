@@ -6,7 +6,7 @@ class SchoolsController < ApplicationController
     @schools = School.all
     # authorize! :read, @schools
   end
-
+  
   # This action creates an instance for new school
   def new
     @school = School.new

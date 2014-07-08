@@ -7,12 +7,12 @@ class ScoresController < ApplicationController
 
   # This action creates an instance for new score
   def new
-  	@score = Score.new
+    @score = Score.new
   end
 
   # This action insert a new record in scores table  
   def create
-  	@score = Score.new(score_params)
+    @score = Score.new(score_params)
     if @score.save
       redirect_to games_url
     else
@@ -31,4 +31,5 @@ class ScoresController < ApplicationController
   def score_params
     params.require(:score).permit(:score1, :game_id, :team1, :score2, :team2)
   end
+  
 end
