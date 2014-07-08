@@ -9,7 +9,7 @@
   <% @athletes.each do |athlete| %>
     <tr>
       <td><%= athlete.id %></td>
-      <td><%= athlete.name %></td>
+      <td class = <%= td_color_depend_on_city(athlete.city) %>> <%= athlete.name %></td>
       <td><%= athlete.city %></td>
       <td><%= link_to "View", athlete_path(athlete) %></td>
     </tr>
@@ -19,7 +19,7 @@
   <%= link_to "Add New Athlete", new_athlete_path %>
 <% end %>
 
-<% Athlete.city.name_with.each do |t| %>
+<% Athlete.khajuraho_city.each do |t| %>
   <%= t.name %>
   <br>
 <% end %>
