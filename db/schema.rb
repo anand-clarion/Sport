@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709065707) do
+ActiveRecord::Schema.define(version: 20140709072947) do
 
   create_table "athlete_teams", force: true do |t|
     t.integer  "athlete_id"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20140709065707) do
   end
 
   create_table "schools", force: true do |t|
-    t.text     "name"
     t.text     "address"
     t.string   "phone_no"
     t.datetime "created_at"
@@ -92,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140709065707) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "school_name"
   end
 
   create_table "scores", force: true do |t|
