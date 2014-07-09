@@ -20,14 +20,15 @@
         <%= link_to "Athletes", athletes_path %>
         <%= link_to "School", schools_path %>
         <%= link_to "Games", games_path %>
-      <%= link_to "Team", teams_path %>
+        <%= link_to "Team", teams_path %>
       </div>
     <% else %>
   	 <%= link_to "Sign up", new_athlete_registration_path %> |
   	 <%= link_to "Login", new_athlete_session_path %>
 	  <% end %>
   </div>
-
-	<%= yield %>
+  <center>
+	  <%= yield %>
+  </center>
 </body>
 </html>

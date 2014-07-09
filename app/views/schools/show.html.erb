@@ -1,0 +1,28 @@
+<h4><%= @school.name %> Information</h4>
+<table>
+  <tr>
+    <th>School Id</th>
+    <th>School name</th>
+    <th>School address</th>
+    <th>Phone no</th>
+    <th>Image</th>
+    <% if can? :manage, @school %>
+      <th colspan="2">Action</th>
+    <% end %>
+  </tr>
+  <tr>
+    <td><%= @school.id %></td>
+    <td><%= @school.name %></td>
+    <td><%= @school.address %></td>
+    <td><%= @school.phone_no %></td>
+    <td><%= image_tag @school.avatar.url %></td>
+    <% if can? :update, @school %>
+      <td><%= link_to 'Edit', edit_school_path(@school) %></td>
+    <% end %>
+    <% if can? :destroy, @school %>
+      <td><%= link_to 'Delete', school_path(@school),confirm: "Are you Sure",method: :delete %></td>
+    <% end %>
+   
+  </tr>
+</table>
+<%= link_to 'School Index', schools_path %>

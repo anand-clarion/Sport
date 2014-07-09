@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'athletes#index'
+  post "schools/search" => "schools#search"
   #post "athletes/new_athlete" => "athletes#new_athlete"
 
   # Example of regular route:

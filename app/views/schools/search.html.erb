@@ -1,0 +1,18 @@
+<h3> Search Result </h3>
+<% if @school.empty? %>
+  <h4>No match found </h4>
+<% end %>
+<table>
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>View</th>
+  </tr>
+  <% @school.each_with_index do |school, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= school.name %></td>
+      <td><%= link_to "show", school_path(school) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,24 +1,21 @@
+<div class = "search_form">
+  <%= form_tag :controller => 'schools', :action => 'search' do %>  
+  <%= text_field_tag :search, params[:search], placeholder: "Search school" %> 
+  <%= submit_tag "Search", :name => nil %>     
+  <% end %>
+</div>
+<h3> School Index </h3>
 <table>
   <tr>
     <th>School Id</th>
     <th>School name</th>
-    <th>School address</th>
-    <th>Phone no</th>
-    <th colspan="2"></th>
+    <th>View</th>
   </tr>
   <% @schools.each do |school| %>
     <tr>
       <td><%= school.id %></td>
       <td><%= school.name %></td>
-      <td><%= school.address %></td>
-      <td><%= school.phone_no %></td>
-      <% if can? :update, school %>
-        <td><%= link_to 'Edit', edit_school_path(school) %></td>
-      <% end %>
-      <% if can? :destroy, school %>
-        <td><%= link_to 'Delete', school_path(school),confirm: "Are you Sure",method: :delete %></td>
-      <% end %>
-      <td><%= image_tag school.avatar.url %></td>
+      <td><%= link_to "show", school_path(school) %></td>
     </tr>
   <% end %>
 </table>

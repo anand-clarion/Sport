@@ -1,5 +1,4 @@
 class SchoolsController < ApplicationController
-  load_and_authorize_resource
   
   # This action show all schools
   def index
@@ -23,6 +22,10 @@ class SchoolsController < ApplicationController
       render "new"
     end
   end
+  # This action show a school information
+  def show
+    @school = School.find(params[:id])
+  end
 
   # This action edit a school information
   def edit
@@ -45,6 +48,11 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id]).destroy
     flash[:notice] = "School successfully deleted"
     redirect_to schools_url
+  end
+
+  def search
+    @school = School.search(params[:search])
+    # abort @school.inspect
   end
 
   private
