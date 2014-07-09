@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707074935) do
+ActiveRecord::Schema.define(version: 20140709065707) do
 
   create_table "athlete_teams", force: true do |t|
     t.integer  "athlete_id"
