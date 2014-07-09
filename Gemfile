@@ -42,3 +42,4 @@ gem 'cancan'
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
 gem "paperclip"
+gem 'thin'
