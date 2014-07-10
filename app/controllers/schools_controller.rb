@@ -10,11 +10,13 @@ class SchoolsController < ApplicationController
   # This action creates an instance for new school
   def new
     @school = School.new
+    teams = @school.teams.build
   end
 
   # This action insert a new record in schools table 
   def create
-    if School.create!(school_params)
+    @school = School.new(school_params)
+    if @school.save
       # flash.now[:error] = "Could not save client"
       flash[:notice] = "School successfully created"
       redirect_to schools_url
@@ -59,7 +61,7 @@ class SchoolsController < ApplicationController
  
   # This action permit accessible attributes
   def school_params
-    params.require(:school).permit(:name, :address, :phone_no, :avatar)
+    params.require(:school).permit(:name, :address, :phone_no, :avatar,teams_attributes: [:name])
   end
 
 end

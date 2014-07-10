@@ -1,19 +1,36 @@
 <%= form_for @school  do |f| %>
+  <% if @school.errors.any? %>
+    <div class="error_explanation">
+      <span><b>Errors</b></span>
+      <ul>
+        <% @school.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :address %>
+    <%= f.label :address %><br>
     <%= f.text_field :address %>
   </p>
   <p>
-    <%= f.label :phone_no %>
+    <%= f.label :phone_no %><br>
     <%= f.text_field :phone_no %>
   </p>
   <p>
     <%= f.file_field :avatar %>
   </p>
+  <p>Team's form</p>
+  <%= f.fields_for :teams do |ff| %>
+  <p>
+    <%= ff.label :name %><br>
+    <%= ff.text_field :name %>
+  </p>
+  <% end %>
   <p>
     <%= f.submit %>
   </p>

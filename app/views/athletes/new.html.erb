@@ -1,4 +1,15 @@
 <%= form_for @athlete, url: save_athletes_path do |f| %>
+  <% if @athlete.errors.any? %>
+    <div class="error_explanation">
+      <span><b>Errors</b></span>
+      <ul>
+        <% @athlete.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div><%= f.label :name %><br />
     <%= f.text_field :name %></div>
 
@@ -22,10 +33,6 @@
  
   <div><%= f.label :school_id %><br>
     <%= f.collection_select(:school_id, School.all, :id, :name, {:onchange => "alert_me_test()" })%>
-  </div>
-  <div>
-    <%= f.label :team_id %><br>
-    <%= f.collection_select(:team_id, Team.all, :id, :name) %>
   </div>
   <p>
     <%= f.file_field :avatar %>

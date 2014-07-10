@@ -7,28 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class ="header">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-    <% end %>
-    <% if athlete_signed_in? %>
-    	Logged in as <strong><%= current_athlete.name %></strong>
-      E-mail- <b><%=current_athlete.email %></b>
-    	<%= link_to 'Edit profile', edit_athlete_registration_path %>|
-      <%= link_to "Logout", destroy_athlete_session_path, method: :delete  %>
-      <div class="header1">
-        <%= link_to "Athletes", athletes_path %>
-        <%= link_to "School", schools_path %>
-        <%= link_to "Games", games_path %>
-        <%= link_to "Team", teams_path %>
-      </div>
-    <% else %>
-  	 <%= link_to "Sign up", new_athlete_registration_path %> |
-  	 <%= link_to "Login", new_athlete_session_path %>
-	  <% end %>
-  </div>
-  <center>
-	  <%= yield %>
-  </center>
+    <%= render "shared/header" %>
+    <div class="container" >
+      <%= yield %>  
+    </div>
 </body>
 </html>

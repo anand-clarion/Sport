@@ -10,7 +10,7 @@
     <tr>
       <td><%= team.id %></td>
       <td><%= team.name %></td>
-      <td><%= team.school %></td>
+      <td><%= team.school.name %></td>
       <% if can? :update, team %>
         <td><%= link_to "Edit", edit_team_path(team) %></td>
       <% end %>

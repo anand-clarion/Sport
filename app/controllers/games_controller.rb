@@ -18,7 +18,8 @@ class GamesController < ApplicationController
     game = game_params
     game.delete(:school1)
     game.delete(:school2)
-    if @game = Game.create(game)
+    @game = Game.new(game_params)
+    if @game.save
       flash[:notice] = "Game successfully created"
       redirect_to games_url
     else

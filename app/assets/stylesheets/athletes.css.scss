@@ -1,9 +1,9 @@
 // Place all the styles related to the athletes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-table {border-collapse: collapse}
+table {border-collapse: collapse; width:40% }
 table td, th {border: 2px groove}
-th { padding: 8px; color: blue; }
+th { padding: 3px; color: blue; }
 td { padding: 2px; }
 
 
@@ -37,4 +37,9 @@ td { padding: 2px; }
 .Lavender
 {
   background-color:Lavender;
+}
+
+.error_explanation
+{
+  color:red;
 }

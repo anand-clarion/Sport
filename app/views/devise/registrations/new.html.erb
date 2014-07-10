@@ -26,10 +26,6 @@
   <div><%= f.label :school_id %><br>
     <%= f.collection_select(:school_id, School.all, :id, :name, {:onchange => "alert_me_test()" })%>
   </div>
-  <div>
-    <%= f.label :team_id %><br>
-    <%= f.collection_select(:team_id, Team.all, :id, :name) %>
-  </div>
   <p>
     <%= f.file_field :avatar %>
   </p>

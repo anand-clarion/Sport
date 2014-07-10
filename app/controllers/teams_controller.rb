@@ -13,7 +13,8 @@ class TeamsController < ApplicationController
 
   # This action insert a new record in teams table
   def create
-    if Team.create(team_params)
+    @team = Team.new(team_params)
+    if @team.save
       flash[:notice] = "Team successfully created"
       redirect_to teams_url
     else

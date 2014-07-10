@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :schools do
+    collection do
+      post 'search'
+    end
+  end
+
   # get "registrations/:id/update_teams" => "registrations#update_teams"
   
   get "/update_teams" => "games#update_teams"
@@ -29,7 +35,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'athletes#index'
-  post "schools/search" => "schools#search"
+  # post "schools/search" => "schools#search"
   #post "athletes/new_athlete" => "athletes#new_athlete"
 
   # Example of regular route:
