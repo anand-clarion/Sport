@@ -11,7 +11,6 @@ class Devise::RegistrationsController < DeviseController
   # POST /resource
   def create
     build_resource(sign_up_params)
-
     if resource.save
       yield resource if block_given?
       if resource.active_for_authentication?
@@ -75,6 +74,11 @@ class Devise::RegistrationsController < DeviseController
     redirect_to new_registration_path(resource_name)
   end
 
+  def update_team
+    @teams = Team.where(:school_id => params[:school_id]).all
+    render :partial => "teams", :object => @teams
+  end
+
   protected
 
   def update_needs_confirmation?(resource, previous)
@@ -127,11 +131,12 @@ class Devise::RegistrationsController < DeviseController
 
   def sign_up_params
     # devise_parameter_sanitizer.sanitize(:sign_up)
-    params.require(:athlete).permit(:name, :city, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar)
+    params.require(:athlete).permit(:name, :city, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar, :team_id)
   end
 
   def account_update_params
     #devise_parameter_sanitizer.sanitize(:account_update)
-    params.require(:athlete).permit(:name, :city, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :current_password, :avatar)
+    params.require(:athlete).permit(:name, :city, :state, :phone_no, :school_id, :email,:team_id, :password, :password_confirmation, :current_password, :avatar)
   end
+
 end

@@ -26,10 +26,14 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_scope :athlete do
+    get "update_team", to: "devise/registrations#update_team"
+  end
   # get "registrations/:id/update_teams" => "registrations#update_teams"
   
   get "/update_teams" => "games#update_teams"
   get "/update_teams2" => "games#update_teams2"
+  # get "/update_team" => "devise/registrations#update_team"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

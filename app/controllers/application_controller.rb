@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # check_authorization
   protect_from_forgery with: :exception
-  before_filter :authenticate_athlete!
+  before_filter :authenticate_athlete!, :except => [:update_teams]
   alias_method :current_user, :current_athlete # Could be :current_member or :logged_in_user
 
   rescue_from CanCan::AccessDenied do | exception |

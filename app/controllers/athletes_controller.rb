@@ -1,5 +1,15 @@
 class AthletesController < ApplicationController
   load_and_authorize_resource
+  # after_filter :set_athlete, :only => :show
+ 
+
+
+  # def set_athlete
+    # cookies[current_athlete.id] = Array.new
+    # abort cookies[current_athlete.id].include?(@athlete).inspect
+    # cookies[current_athlete.id] << @athlete.id 
+    # abort cookies[current_athlete.id].inspect
+  # end
 
   # This action show all athletes
   def index
@@ -66,7 +76,7 @@ class AthletesController < ApplicationController
 
   # This action permit accessible attributes
   def athlete_params
-    params.require(:athlete).permit(:name, :city, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar)
+    params.require(:athlete).permit(:name, :city, :team_id, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar)
   end
 
 end

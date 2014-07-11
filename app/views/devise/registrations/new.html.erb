@@ -22,9 +22,14 @@
 
   <div><%= f.label :phone_no %><br />
   	<%= f.text_field :phone_no %></div>
- 
-  <div><%= f.label :school_id %><br>
-    <%= f.collection_select(:school_id, School.all, :id, :name, {:onchange => "alert_me_test()" })%>
+  <div>
+    <br>
+    <%= f.label :school_id %>
+    <%= select_tag "athlete[school_id]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_devise(this.value)" %>
+    <%= f.label :team_id %>
+    <span id="teamsDevise">
+      <%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>
+    </span>
   </div>
   <p>
     <%= f.file_field :avatar %>
