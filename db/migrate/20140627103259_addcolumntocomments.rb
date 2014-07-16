@@ -1,13 +1,7 @@
 class Addcolumntocomments < ActiveRecord::Migration
   def up
-  	add_column :comments, :content, :text
-  	add_column :comments, :commentable_id, :integer
-  	add_column :comments, :commentable_type, :string
   end
 
-  def down
-  	remove_column :comments, :content
-  	remove_column :comments, :commentable_id
-  	remove_column :comments, :commentable_type
+  def down	
   end
 end
