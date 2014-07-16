@@ -1,5 +1,9 @@
 class RenameSchoolNameInSchools < ActiveRecord::Migration
-  def change
+  def up
     rename_column :schools, :school_name, :name
   end
+
+  def down
+  end
+  
 end

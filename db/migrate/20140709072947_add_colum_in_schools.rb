@@ -9,10 +9,10 @@ class AddColumInSchools < ActiveRecord::Migration
   end
 
   def down
-    add_column :schools, :name, :string
-    School.all.each do |school|
-      school.name = school.school_name
-      school.save!
+     add_column :schools, :name, :string
+     School.all.each do |school|
+       school.name = school.school_name
+       school.save!
     end
     remove_column :schools, :school_name
   end

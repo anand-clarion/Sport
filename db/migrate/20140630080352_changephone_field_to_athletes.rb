@@ -1,5 +1,8 @@
 class ChangephoneFieldToAthletes < ActiveRecord::Migration
-  def change
+  def up
   	change_column :athletes, :phone_no, :bigint
+  end
+
+  def down
   end
 end
