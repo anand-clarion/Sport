@@ -4,6 +4,13 @@ class GamesController < ApplicationController
   # This action show all games
   def index
     @games = Game.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @games }
+      format.xml { render :xml => @games }
+      format.csv { render :csv => @posts }
+      format.js
+    end
   end
 
   # This action creates an instance for new game

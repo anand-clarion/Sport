@@ -43,3 +43,8 @@ gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
 gem "paperclip"
 gem 'thin'
+gem "debugger"
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'  
+end

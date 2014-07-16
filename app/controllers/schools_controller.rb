@@ -27,6 +27,13 @@ class SchoolsController < ApplicationController
   # This action show a school information
   def show
     @school = School.find(params[:id])
+     respond_to do |format|
+      format.html
+      format.json{ render :json => @school }
+      format.xml { render :xml => @school }
+      format.csv { render :csv => @school }
+      format.js
+    end
   end
 
   # This action edit a school information

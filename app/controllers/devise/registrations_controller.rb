@@ -4,7 +4,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/sign_up
   def new
-    @teams = Team.all 
+    # @teams = Team.all 
     build_resource({})
     respond_with self.resource
   end

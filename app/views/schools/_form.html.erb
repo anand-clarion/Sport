@@ -9,27 +9,27 @@
       </ul>
     </div>
   <% end %>
-  <p>
+  <div>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :address %><br>
     <%= f.text_field :address %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :phone_no %><br>
     <%= f.text_field :phone_no %>
-  </p>
+  </div>
   <p>
     <%= f.file_field :avatar %>
   </p>
   <p>Team's form</p>
   <%= f.fields_for :teams do |ff| %>
-  <p>
+  <div>
     <%= ff.label :name %><br>
     <%= ff.text_field :name %>
-  </p>
+  </div>
   <% end %>
   <p>
     <%= f.submit %>

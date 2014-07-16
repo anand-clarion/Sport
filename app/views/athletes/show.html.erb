@@ -1,4 +1,7 @@
 <%= flash[:notice] %>
+<!--<%= debug @athlete %>
+<%= simple_format @athlete.to_yaml %>
+<%= @athlete.inspect %> -->
 <center><h4> Profile of - <%= @athlete.name %></h4></center>
 <div class = "athlete_show">
   <%= image_tag @athlete.avatar.url %>

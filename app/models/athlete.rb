@@ -13,15 +13,15 @@ class Athlete < ActiveRecord::Base
   has_many :comments, :as => :commentable 
   has_many :likes, :as => :likable
   attr_accessor :term_and_condition
-  #validates :term_and_condition, acceptance: true
+  validates :term_and_condition, acceptance: true
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100>" }, :default_url => "/user.gif"
-  # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  # validates :name, presence: true, uniqueness: true
-  # validates :city, length: { minimum: 4 }
-  # validates :phone_no, length: { is: 10 , message: "Please Enter a valid 10 digit phone_no" }
-  # validates :school_id, presence: true
-  # validate :school_name, on: :create
+  validates :name, presence: true, uniqueness: true, on: :create
+  validates :city, length: { minimum: 4 }
+  validates :phone_no, length: { is: 10 , message: "Please Enter a valid 10 digit phone_no" }
+  validates :school_id, presence: true
+  validate :school_name, on: :create
 
   def school_name
     errors.add(:base, "#{self.school.name} - school is not permitted") unless school_id.between?(1, 3)

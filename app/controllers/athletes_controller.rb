@@ -1,9 +1,7 @@
 class AthletesController < ApplicationController
   load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   # after_filter :set_athlete, :only => :show
- 
-
-
   # def set_athlete
     # cookies[current_athlete.id] = Array.new
     # abort cookies[current_athlete.id].include?(@athlete).inspect
@@ -13,9 +11,9 @@ class AthletesController < ApplicationController
 
   # This action show all athletes
   def index
+    # debugger
     @athletes = Athlete.all
-    @a = Athlete.first
-    @a = Athlete.scope_with_argument(@a.id)
+    # @a = Athlete.scope_with_argument(@a.id)
   end
 
   # This action creates an instance for new athlete
@@ -77,6 +75,12 @@ class AthletesController < ApplicationController
   # This action permit accessible attributes
   def athlete_params
     params.require(:athlete).permit(:name, :city, :team_id, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar)
+  end
+
+  private
+  def record_not_found
+    flash[:notice] = "This record is not avialable"
+    redirect_to athletes_url
   end
 
 end
