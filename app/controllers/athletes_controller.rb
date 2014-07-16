@@ -52,6 +52,11 @@ class AthletesController < ApplicationController
   # This action show an athlete information
   def show
     @athlete = Athlete.find(params[:id])
+    @commentable = @athlete
+    # @commentable = find_commentable
+    # abort @commentable.inspect
+    # @comments = @commentable.comments.new
+    @comment = @athlete.comments.new
   end
 
   # This action create a new athlete if admin add a new athlete 
@@ -76,6 +81,15 @@ class AthletesController < ApplicationController
   def athlete_params
     params.require(:athlete).permit(:name, :city, :team_id, :state, :phone_no, :school_id, :email, :password, :password_confirmation, :avatar)
   end
+
+   def find_commentable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+  end
+
 
   private
   def record_not_found

@@ -39,25 +39,25 @@
     <% end %>
   </table>
 </div>
+
 <div class = "athlete_show_comment">
   <h4> comments - <%= @athlete.comments.count %></h4>
-  <% if @athlete.comments.empty? %>
-    <%= link_to '$Add comment', new_athlete_comment_path(@athlete) %>
-  <% else %>
+  <%= form_for [@commentable, @comment] do |f| %>
+    <p>
+      <%= f.label :content %><br />
+      <%= f.text_area :content, :rows => 2 %>
+    </p>
+    <p>
+      <%= submit_tag "comment" %>
+    </p>
+  <% end %>
+  <% if @athlete.comments.count > 0 %>
     <% @athlete.comments.each do |comment| %>
-      <ul>
-        <li><%=comment.content %></li>
-      </ul>
-      <% if can? :destroy, @athlete %>
-        <%= link_to "Edit", edit_athlete_comment_path(@athlete, comment) %>
-      <% end %>
-      <% if can? :destroy, @athlete %>
-        <%= link_to "Delete", athlete_comment_path(@athlete, comment), method: :delete %>
-      <% end %>
+        <li><%= comment.content %></li>
     <% end %>
-    <%= link_to'Add comment',new_athlete_comment_path(@athlete) %>
   <% end %>
 </div>
+
 <div class = "athlete_show_like">
   <h4>Total Likes - <%= @athlete.likes.count %></h4>
   <%= button_to "like", new_athlete_like_path(@athlete), method: :get %>

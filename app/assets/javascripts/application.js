@@ -45,38 +45,39 @@ $(document).on('ready page:load', function () {
 });
   
 
-  function update_teams_div2(school_id) {  
-    $.ajax({
-      url: "/update_teams2",
-      type: "GET",
-      data: {"school_id" : school_id},
-      dataType: "html",
-      success: function(data) {
-        $("#teamsDiv2").html(data);
-      }  
-    });
-  }
+function update_teams_div2(school_id) {  
+  $.ajax({
+    url: "/update_teams2",
+    type: "GET",
+    data: {"school_id" : school_id},
+    dataType: "html",
+    success: function(data) {
+      $("#teamsDiv2").html(data);
+    }  
+  });
+}
   
- function update_teams_div(school_id) {  
-    $.ajax({
-      url: "/update_teams",
-      type: "GET",
-      data: {"school_id" : school_id},
-      dataType: "html",
-      success: function(data) {
-        $("#teamsDiv").html(data);
-      }  
-    });
-  }
+function update_teams_div(school_id) {  
+  $.ajax({
+    url: "/update_teams",
+    type: "GET",
+    data: {"school_id" : school_id},
+    dataType: "html",
+    success: function(data) {
+      $("#teamsDiv").html(data);
+    }  
+  });
+}
 
-  function update_teams_devise(school_id) {  
-    $.ajax({
-      url: "/update_team",
-      type: "GET",
-      data: {"school_id" : school_id},
-      dataType: "html",
-      success: function(data) {
-        $("#teamsDevise").html(data);
-      }  
-    });
-  }
+function update_teams_devise(school_id) {  
+  $.ajax({
+    url: "/update_team",
+    type: "GET",
+    data: {"school_id" : school_id},
+    dataType: "html",
+    success: function(data) {
+      $("#teamsDevise").html(data);
+    }  
+  });
+}
+
