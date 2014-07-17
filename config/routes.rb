@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :athletes
+  # devise_for :athletes
   # devise_for :athletes, :controllers => { registrations: 'registrations' }
+  devise_for :athletes, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
   resources :athletes do 
     collection do
       post 'save'
     end
   end
+  resources :omniauth_callbacks
   resources :scores
   resources :teams
   resources :schools
