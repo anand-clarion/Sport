@@ -53,12 +53,6 @@ class AthletesController < ApplicationController
   def show
     @athlete = Athlete.find(params[:id])
     @commentable = @athlete
-<<<<<<< HEAD
-    # @commentable = find_commentable
-    # abort @commentable.inspect
-    # @comments = @commentable.comments.new
-=======
->>>>>>> development
     @comment = @athlete.comments.new
   end
 
