@@ -48,3 +48,6 @@ group :production do
   gem 'rails_12factor'
   gem 'pg'  
 end
+
+gem "omniauth-google-oauth2"
+

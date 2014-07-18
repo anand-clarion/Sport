@@ -22,7 +22,11 @@
     </tr>
     <tr>
       <th>School</th>
-      <td><%= @athlete.school.name %></td>
+      <% if @athlete.school.present? %>
+        <td><%= @athlete.school.name %></td>
+      <% else %>
+        <td>Not assigned</td>
+      <% end %>
     </tr>
     <tr>
       <th>Phone</th>
