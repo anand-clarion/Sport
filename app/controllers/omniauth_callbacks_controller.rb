@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController 
+  # This action verify user based on googl api information
   def google_oauth2
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
     @athlete = Athlete.find_for_google_oauth2(request.env["omniauth.auth"], current_athlete)
     # render :text => @athlete.to_yaml and return false
     if @athlete.persisted?

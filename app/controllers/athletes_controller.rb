@@ -52,6 +52,8 @@ class AthletesController < ApplicationController
   # This action show an athlete information
   def show
     @athlete = Athlete.find(params[:id])
+    @commentable = @athlete
+    @comment = @athlete.comments.new
   end
 
   # This action create a new athlete if admin add a new athlete 

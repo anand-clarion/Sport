@@ -21,7 +21,8 @@ class Athlete < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, on: :create
   validates :city, length: { minimum: 4 }
   validates :phone_no, length: { is: 10 , message: "Please Enter a valid 10 digit phone_no" }
-  # validates :school_id, presence: true
+  validates :school_id, presence: true
+  validates :team_id, presence: true, if: Proc.new { |a| a.school_id.present? }
   # validate :school_name, on: :create
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
