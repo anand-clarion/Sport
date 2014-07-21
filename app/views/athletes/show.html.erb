@@ -63,6 +63,6 @@
 </div>
 
 <div class = "athlete_show_like">
-  <h4>Total Likes - <%= @athlete.likes.count %></h4>
-  <%= button_to "like", new_athlete_like_path(@athlete), method: :get %>
+  <p id="like_count">Total likes - <%= @athlete.likes.count %> </p>
+  <button value = "<%= @athlete.id %>" id = "like_button" ><%= user_already_liked(@athlete.id, current_athlete.id) %> </button>
 </div>

@@ -54,6 +54,7 @@ class AthletesController < ApplicationController
     @athlete = Athlete.find(params[:id])
     @commentable = @athlete
     @comment = @athlete.comments.new
+    logger.debug "Extra information by me"
   end
 
   # This action create a new athlete if admin add a new athlete 

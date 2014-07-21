@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   
   get "/update_teams" => "games#update_teams"
   get "/update_teams2" => "games#update_teams2"
-  # get "/update_team" => "devise/registrations#update_team"
+  get "/likes_new" => "likes#new"
+  get "/likes_delete" => "likes#delete"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

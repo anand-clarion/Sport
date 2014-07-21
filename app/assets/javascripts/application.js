@@ -40,11 +40,32 @@ $(document).on('ready page:load', function () {
     $("#term_and_condition").on("click", function(){
       alert(" Term and Condition\n1. Always Follow Rules for login\n ");
     })
+  });  
+
+  $(function() {
+    $("#like_button").on("click", function(){
+      if($("#like_button").text() == 'like') {
+        $('#like_button').text('liked');
+        var value = $('#like_button').val();
+        $.ajax({
+          url: "/likes_new",
+          type: "GET",
+          data: {"athlete" : value }
+        });
+      }
+      else {
+        $('#like_button').text('like');
+        var value = $('#like_button').val();
+        $.ajax({
+          url: "/likes_delete",
+          type: "GET",
+          data: {"athlete" : value }
+        });
+      } 
+    });
   });
-  
 });
   
-
 function update_teams_div2(school_id) {  
   $.ajax({
     url: "/update_teams2",
@@ -80,4 +101,5 @@ function update_teams_devise(school_id) {
     }  
   });
 }
+
 

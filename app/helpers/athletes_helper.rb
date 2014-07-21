@@ -8,4 +8,14 @@ module AthletesHelper
       "Lavender"
     end
   end
+
+  def user_already_liked(athlete, current_athlete)
+    @likable = Athlete.find(athlete)
+    if Like.where(likable_id: @likable.id , likable_type: @likable.class , user: current_athlete).exists?
+      "liked"
+    else
+      "like"
+    end
+  end
+
 end
