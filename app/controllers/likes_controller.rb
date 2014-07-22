@@ -2,6 +2,7 @@ class LikesController < ApplicationController
 
   # This action insert a new record in likes table
   def new
+    @text = params[:text]
     @likable = Athlete.find(params[:athlete])
     like = Like.new(likable_id: @likable.id , likable_type: @likable.class , user: current_user.id)
     if like.save

@@ -3,7 +3,6 @@ class AthletesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   # after_filter :set_athlete, :only => :show
   # def set_athlete
-    # cookies[current_athlete.id] = Array.new
     # abort cookies[current_athlete.id].include?(@athlete).inspect
     # cookies[current_athlete.id] << @athlete.id 
     # abort cookies[current_athlete.id].inspect
@@ -51,7 +50,13 @@ class AthletesController < ApplicationController
   
   # This action show an athlete information
   def show
+    (session[:current_athlete] ||= [])
     @athlete = Athlete.find(params[:id])
+    if session[:current_athlete].include?(@athlete.id)
+      flash[:notice] = "You have visited this user before"
+    else
+      session[:current_athlete].push(@athlete.id) || Array.new
+    end
     @commentable = @athlete
     @comment = @athlete.comments.new
     logger.debug "Extra information by me"

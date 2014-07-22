@@ -50,7 +50,7 @@ $(document).on('ready page:load', function () {
         $.ajax({
           url: "/likes_new",
           type: "GET",
-          data: {"athlete" : value }
+          data: { "athlete" : value }
         });
       }
       else {
@@ -59,7 +59,7 @@ $(document).on('ready page:load', function () {
         $.ajax({
           url: "/likes_delete",
           type: "GET",
-          data: {"athlete" : value }
+          data: { "athlete" : value }
         });
       } 
     });
