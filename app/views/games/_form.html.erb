@@ -16,14 +16,15 @@
     </p>
     <h4> Create new game </h4>
     <%= f.label :school1 %>
-    <%= select_tag "game[school1]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_div(this.value)" %>
+    <%= select_tag "game[school1]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :value => "this.value" %>
     <%= f.label :team1 %>
     <span id="teamsDiv">
       <%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>
     </span>
+    
     <div class="game_new_vs"><h3> V/S </h3></div>
     <%= f.label :school2 %>
-    <%= select_tag "game[school2]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_div2(this.value)" %>
+    <%= select_tag "game[school2]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School",:value => "this.value" %> 
     <%= f.label :team2 %>
     <span id="teamsDiv2">
       <%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>

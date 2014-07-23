@@ -66,5 +66,4 @@
   <p id="like_count">Total likes - <%= @athlete.likes.count %> </p>
   <button value = "<%= @athlete.id %>" id = "like_button" ><%= user_already_liked(@athlete.id, current_athlete.id) %> </button>
 </div>
- 
- <%= session[:current_athlete] %>  
+  

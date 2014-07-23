@@ -5,7 +5,7 @@
   <div>
     <br>
     <%= f.label :school_id %>
-    <%= select_tag "athlete[school_id]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :onchange => "update_teams_devise(this.value)" %>
+    <%= select_tag "athlete[school_id]", options_from_collection_for_select(School.all, "id", "name"), :prompt => "Select a School", :value => "this.value" %>
     <%= f.label :team_id %>
     <span id="teamsDevise">
       <%= render :partial => 'teams', :locals => {:teams => @teams||[]} %>
