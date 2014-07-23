@@ -14,53 +14,47 @@
  *= require jquery-ui-timepicker-addon
  *= require_self
  */
-body{ 
-}
-a{  
+body { background-color:AliceBlue; }
+a {  
   font-weight:bold; 
   text-decoration:none; 
   margin:14px; 
-  
 }
 
-.header
-{
-  height:130px;
+.header {
+  height:150px;
   background-color:Gainsboro;
   margin-top:-10px;
-  /*background-attachment:fixed;*/
-  /*background-image: url(hospital.jpeg);*/
 }
-.container
-{
-  height:522px;
+.container {
+  height:auto;
   clear:both;
   padding-left:30px;
-
+  padding-top:20px;
 }
-.footer
-{
+
+.footer {
   background-color:Gainsboro;
   clear:both;
   width:100%;
   height:50px;   
 }
 
-.user_information{
+.user_information {
 float:right;
 }
 
-.header_link{ 
+.header_link { 
   margin-top:2px;
   background-color:Gainsboro
 }
 
-.ui-datepicker{  
+.ui-datepicker {  
   width: auto;  
   height: auto;  
 }
 
-.ui-datepicker-trigger{
+.ui-datepicker-trigger {
   width:25px;height:25px;
   margin-bottom:-7px;
 }
@@ -69,7 +63,8 @@ img {
   height:100px;
   width:100px;
 }
-.header_image{
+
+.header_image {
   height:110px;
   width:530px;
 }
