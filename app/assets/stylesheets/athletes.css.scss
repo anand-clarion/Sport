@@ -7,40 +7,46 @@ th { padding: 3px; color: blue; }
 td { padding: 2px; }
 
 
-.athlete_show
-{
-	height: 200px; width:300px;margin-left:160px;float:right; 
+.athlete_show {
+  height: 200px;
+  width:300px;
+  margin-left:160px;
+  float:right; 
 }
 
-.athlete_show_detail
-{
-	height:220px; width:300px;float:right;margin-left: 167px
+.athlete_show_detail {
+  height:220px;
+  width:300px;
+  float:right;
+  margin-left: 167px;
 }
-.athlete_show_comment
-{
-	margin-left:200px;float:right;margin-right: 200px;
+
+.athlete_show_comment {
+  margin-left:200px;
+  float:right;
+  margin-right: 200px;
 }
-.athlete_show_like
-{
-	margin-left:247px;float:left;position:absolute;margin-top:223px
+
+.athlete_show_like {
+  margin-left:247px;
+  float:left;
+  position:absolute;
+  margin-top:223px;
 }
-.red
-{
+
+.red {
   background-color:red;
 }
 
-.grey
-{
+.grey {
   background-color:grey;
 }
 
-.Lavender
-{
+.Lavender {
   background-color:Lavender;
 }
 
-.error_explanation
-{
+.error_explanation {
   color:red;
 }
 
