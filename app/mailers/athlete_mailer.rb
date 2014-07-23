@@ -5,4 +5,9 @@ class AthleteMailer < ActionMailer::Base
     @url  = 'http://example.com/login'
     mail(to: @athlete.email, subject: 'Welcome to My Awesome Site')
   end
+  
+  def testmail
+    mail(to: "shreenarayan.soman@clariontechnologies.co.in", subject: 'Welcome to My Awesome Site')
+  end
+
 end
