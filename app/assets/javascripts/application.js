@@ -111,7 +111,6 @@ $(document).on('ready page:load', function () {
 
   $(function() {
     $("#active_button").on("click", function(){
-      console.log($("#active_button").text())
       if ($("#active_button").text() == " deactivate ") {
         $('#active_button').text("activate athlete")
         var value = $('#active_button').val();
