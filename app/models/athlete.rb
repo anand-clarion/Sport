@@ -44,6 +44,17 @@ class Athlete < ActiveRecord::Base
   def school_name
     errors.add(:base, "#{self.school.name} - school is not permitted") unless school_id.between?(1, 3)
   end
+
+  # This action restrict deactivated athlete from login
+  def active_for_authentication?
+    super && !(self.is_deactive) # i.e. super && self.is_active
+  end
+
+  #This action set message for deactivated user at the time fo login
+  def inactive_message
+    "Sorry, this account has been deactivated. Please contact to Admin"
+  end
+
 end
 
 # Athlete belongs school. Athlete has many comments, athlete teams 

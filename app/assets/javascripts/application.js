@@ -111,8 +111,9 @@ $(document).on('ready page:load', function () {
 
   $(function() {
     $("#active_button").on("click", function(){
-      if ($("#active_button").text() == 'deactivate athlete') {
-        $('#active_button').text('activate athlete')
+      console.log($("#active_button").text())
+      if ($("#active_button").text() == " deactivate ") {
+        $('#active_button').text("activate athlete")
         var value = $('#active_button').val();
         $.ajax({
           url: "/deactivate_athlete",
@@ -121,7 +122,7 @@ $(document).on('ready page:load', function () {
         });
       }
       else {
-        $("#active_button").text("deactivate athlete")
+        $("#active_button").text("deactivate")
         var value = $('#active_button').val();
         $.ajax({
           url: "/activate_athlete",

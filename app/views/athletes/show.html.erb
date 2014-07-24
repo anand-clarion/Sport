@@ -44,6 +44,7 @@
         <th>Athlete status</th>
         <td>
           <button id = "active_button" value = "<%= @athlete.id %>" > <%=check_user_status(@athlete.id) %> </button>
+          <%=check_user_status(@athlete.id) %>
         </td>
       </tr>
     <% end %>

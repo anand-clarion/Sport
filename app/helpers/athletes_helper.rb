@@ -23,9 +23,9 @@ module AthletesHelper
   def check_user_status(athlete)
     athlete = Athlete.find(athlete)
     if athlete.is_deactive == false
-      "deactivate athlete"
+      "deactivate"
     else
-      "activate athlete"
+      "activate"
     end
   end
 
