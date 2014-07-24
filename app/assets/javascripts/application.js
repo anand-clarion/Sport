@@ -108,6 +108,30 @@ $(document).on('ready page:load', function () {
       });
     });
   });
+
+  $(function() {
+    $("#active_button").on("click", function(){
+      if ($("#active_button").text() == 'deactivate athlete') {
+        $('#active_button').text('activate athlete')
+        var value = $('#active_button').val();
+        $.ajax({
+          url: "/deactivate_athlete",
+          type: "GET",
+          data: {"athlete_id" : value }
+        });
+      }
+      else {
+        $("#active_button").text("deactivate athlete")
+        var value = $('#active_button').val();
+        $.ajax({
+          url: "/activate_athlete",
+          type: "GET",
+          data: {"athlete_id" : value }
+        });
+      }
+    });
+  });
+
 });
 
 

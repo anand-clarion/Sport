@@ -10,9 +10,11 @@ class AthletesController < ApplicationController
 
   # This action show all athletes
   def index
-    # debugger
-    @athletes = Athlete.all
-    # @a = Athlete.scope_with_argument(@a.id)
+    if current_athlete.admin == true
+      @athletes = Athlete.all
+    else
+      @athletes = Athlete.all.where(is_deactive: 0)
+    end
   end
 
   # This action creates an instance for new athlete
@@ -79,6 +81,25 @@ class AthletesController < ApplicationController
     flash[:notice] = "Athlete successfully deleted"
     redirect_to athletes_url
   end
+
+  # This action deactivate a athlete
+  def deactivate_athlete
+    @athlete = Athlete.find(params[:athlete_id])
+    @athlete.is_deactive = 1
+    @athlete.save
+    AthleteMailer.account_deactivated(@athlete).deliver
+    redirect_to athletes_url
+  end
+
+  # This athlete activate athlete
+  def activate_athlete
+    @athlete = Athlete.find(params[:athlete_id])
+    @athlete.is_deactive = 0
+    @athlete.save
+    AthleteMailer.account_activated(@athlete).deliver
+    redirect_to athletes_url
+  end
+
 
   # This action permit accessible attributes
   def athlete_params

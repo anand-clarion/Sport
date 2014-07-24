@@ -40,6 +40,12 @@
           <%= link_to 'Delete', athlete_path(@athlete), method: :delete %>
         </td>
       </tr>
+      <tr>
+        <th>Athlete status</th>
+        <td>
+          <button id = "active_button" value = "<%= @athlete.id %>" > <%=check_user_status(@athlete.id) %> </button>
+        </td>
+      </tr>
     <% end %>
   </table>
 </div>

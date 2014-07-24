@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get "/update_teams2" => "games#update_teams2"
   get "/likes_new" => "likes#new"
   get "/likes_delete" => "likes#delete"
+  get "/deactivate_athlete" => "athletes#deactivate_athlete"
+  get "/activate_athlete" => "athletes#activate_athlete"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
